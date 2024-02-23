@@ -2,8 +2,9 @@ import './App.css';
 import Pokedex from './mobilecomponents/pokedex/pokedex';
 function App() {
   return (
-
-    <Pokedex />
+    <header>
+      <Pokedex />
+    </header>
 
   );
 }
