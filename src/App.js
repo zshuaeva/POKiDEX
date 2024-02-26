@@ -1,9 +1,9 @@
 import './App.css';
-import Pokedex from './mobilecomponents/pokedex/pokedex';
+import Pokidex from './mobilecomponents/pokidex/Pokidex';
 function App() {
   return (
     <header>
-      <Pokedex />
+      <Pokidex />
     </header>
 
   );
