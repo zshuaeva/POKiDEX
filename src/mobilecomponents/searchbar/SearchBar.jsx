@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
+import { Box, TextField, Button } from '@mui/material';
 
 const SearchBar = ({ onSearch }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -34,16 +35,28 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-      <input
-        type="text"
-        placeholder="Pokemon Name or #"
-        value={searchInput}
-        onChange={handleInputChange}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <>
+    <Box sx={{ '& > :not(style)': { m: 1 } }} className='search-box'>
+      <Box sx={{ display: 'flex', alignItems: 'flex-end', input: {color: 'white'} }}>
+        <TextField
+          InputLabelProps={{style : {color : 'white'} }}
+          id="input-with-sx"
+          label="Pokemon Name or #"
+          variant="outlined"
+          value={searchInput}
+          color="secondary"
+          onChange={handleInputChange}
+          className="search-box"
+        />
+        <Button type="submit" onClick={handleSubmit} variant="primary" size="small" className='search-button'>
+          Search
+        </Button>
+      </Box>
+    </Box>
+</>
+
   );
 };
+
 
 export default SearchBar;

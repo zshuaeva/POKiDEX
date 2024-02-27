@@ -4,7 +4,6 @@ import Pokidex from './mobilecomponents/pokidex/Pokidex';
 import SearchBar from './mobilecomponents/searchbar/SearchBar';
 import ImageBox from './mobilecomponents/imagebox/ImageBox';
 
-
 const App = () => {
   const [pokemonId, setPokemonId] = useState(null);
 
@@ -12,12 +11,15 @@ const App = () => {
     setPokemonId(id);
   };
 
-
   return (
-    <div>
+    <div className="App">
       <Pokidex />
-      <SearchBar onSearch={handleSearch} />
+      <div className="searchbar-component">
+        <SearchBar onSearch={handleSearch} />
+      </div>
+      <div className="imagebox-component">
       <ImageBox pokemonId={pokemonId} />
+      </div>
     </div>
   );
 }
