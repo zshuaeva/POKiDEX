@@ -3,7 +3,7 @@ import './SearchBar.css';
 
 const SearchBar = () => {
   return(
-    <text>Search Bar</text>
+    <text>---Search Bar will go here [________]</text>
   )
 }
 

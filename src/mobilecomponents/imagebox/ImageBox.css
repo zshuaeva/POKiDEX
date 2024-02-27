@@ -1,0 +1,27 @@
+.imagebox-container{
+  height: 250px;
+  width: 300px;
+  background-color: rgb(143, 143, 143);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  border-radius: 20px 20px 20px 0px;
+}
+
+.imagebox-screen {
+  height: 170px;
+  width: 250px;
+  background-color: rgb(0, 238, 255);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.top-dots{
+  height: 10px;
+  width: 10px;
+  background-color: #c20000;
+  border-radius: 50%;
+}
