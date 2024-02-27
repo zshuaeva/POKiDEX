@@ -1,8 +1,5 @@
 import React from 'react';
 import './Pokidex.css';
-import SeachBar from '../searchbar/SearchBar';
-import ImageBox from '../imagebox/ImageBox';
-
 
 const Pokidex = () => {
   return (
@@ -30,14 +27,6 @@ const Pokidex = () => {
         //photo
         //type info / weaknesses / strengths
       }
-      <div className="seachbar-component">
-        <SeachBar/>
-      </div>
-
-      <div className="imagebox-component">
-        <ImageBox/>
-      </div>
-
     </>
   );
 };
