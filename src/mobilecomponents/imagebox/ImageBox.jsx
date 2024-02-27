@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import './ImageBox.css'
+import React, { useState, useEffect, useCallback } from 'react';
+import './ImageBox.css';
 
+const ImageBox = ({ pokemonId }) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
+  const [pokeSprite, setPokeSprite] = useState("");
 
-const ImageBox = () => {
-  const url = "https://pokeapi.co/api/v2/pokemon/493/"
-  // template literal `https://pokeapi.co/api/v2/pokemon-form/${id or name}/`
-  const [pokeSprite, setPokeSprite] = useState("")
-
-  const fetchSprite = () => {
+  const fetchSprite = useCallback(() => {
     return fetch(url)
       .then((res) => res.json())
       .then((d) => setPokeSprite(d.sprites.front_default))
       .catch((error) => console.log("Error fetching data:", error));
-  }
+  }, [url, setPokeSprite]);
 
   useEffect(() => {
     fetchSprite();
-  }, []);
+  }, [pokemonId, fetchSprite]);
+
 
   return (
     <div className="imagebox-container">
@@ -26,14 +25,11 @@ const ImageBox = () => {
       </div>
       <div className="imagebox-screen">
         <div className="poke-image">
-        {pokeSprite && <img src={pokeSprite} alt="Pokemon Sprite" />}
+          {pokeSprite && <img src={pokeSprite} alt="Pokemon Sprite" />}
         </div>
       </div>
-
-
     </div>
-
-  )// end of return
-}// end of function
+  );
+};
 
 export default ImageBox;
