@@ -18,10 +18,20 @@
   display: flex;
   align-items: center;
 }
+.dot-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7px;
+}
 
-.top-dots{
+.top-dots {
   height: 10px;
   width: 10px;
   background-color: #c20000;
   border-radius: 50%;
+  margin: 0 5px;
+}
+
+.shiny-toggle{
+margin-top: 7px;
 }
