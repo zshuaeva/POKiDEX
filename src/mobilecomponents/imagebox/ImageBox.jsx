@@ -14,22 +14,23 @@ const ImageBox = ({ pokemonId }) => {
     },
   }));
 
-  const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
   const [pokeSprite, setPokeSprite] = useState("");
   const [isShiny, setIsShiny] = useState(false);
 
   const fetchSprite = useCallback(() => {
-    const spriteType = isShiny ? 'front_shiny' : 'front_default';
-    return fetch(url)
-      .then((res) => res.json())
-      .then((d) => setPokeSprite(d.sprites[spriteType]))
-      .catch((error) => console.log("Error fetching data:", error));
-  }, [url, setPokeSprite, isShiny]);
+    if (pokemonId) {
+      const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
+      const spriteType = isShiny ? 'front_shiny' : 'front_default';
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => setPokeSprite(data.sprites[spriteType]))
+        .catch((error) => console.log("Error fetching data:", error));
+    }
+  }, [pokemonId, isShiny]);
 
   useEffect(() => {
     fetchSprite();
-  }, [pokemonId, fetchSprite]);
-
+  }, [pokemonId, isShiny, fetchSprite]);
 
   return (
     <div className="imagebox-container">
