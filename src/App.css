@@ -17,6 +17,13 @@
 
 .imagebox-component{
   margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.infobox-component{
+  display: flex;
+  justify-content: center;
 }
 
 html, body, body > div, .app {
