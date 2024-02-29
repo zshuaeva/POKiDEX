@@ -34,3 +34,28 @@
 .shiny-toggle{
 margin-top: 7px;
 }
+
+.shiny-stars{
+  height: 30px;
+  margin-left: 100px;
+  margin-bottom: -2px;
+}
+
+.poke-image{
+  position: absolute;
+}
+.shiny-sprite{
+  margin-top: 30px;
+}
+
+.sprite-container {
+  position: relative;
+
+}
+
+.shiny-stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
