@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './App.css';
-import Pokidex from './mobilecomponents/pokidex/Pokidex';
-import SearchBar from './mobilecomponents/searchbar/SearchBar';
-import ImageBox from './mobilecomponents/imagebox/ImageBox';
-import InfoBox from './mobilecomponents/infobox/InfoBox';
+import React, { useState } from "react";
+import "./App.css";
+import Pokidex from "./mobilecomponents/pokidex/Pokidex";
+import SearchBar from "./mobilecomponents/searchbar/SearchBar";
+import ImageBox from "./mobilecomponents/imagebox/ImageBox";
+import InfoBox from "./mobilecomponents/infobox/InfoBox";
 
 const App = () => {
   const [pokemonId, setPokemonId] = useState(null);
@@ -26,6 +26,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

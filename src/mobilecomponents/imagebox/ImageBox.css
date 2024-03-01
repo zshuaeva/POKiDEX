@@ -1,4 +1,4 @@
-.imagebox-container{
+.imagebox-container {
   height: 250px;
   width: 300px;
   background-color: rgb(143, 143, 143);
@@ -31,31 +31,29 @@
   margin: 0 5px;
 }
 
-.shiny-toggle{
-margin-top: 7px;
+.shiny-toggle {
+  margin-top: 7px;
 }
 
-.shiny-stars{
+.shiny-stars {
   height: 30px;
   margin-left: 100px;
   margin-bottom: -2px;
 }
 
-.poke-image{
+.poke-image {
   position: absolute;
 }
-.shiny-sprite{
+.shiny-sprite {
   margin-top: 30px;
 }
 
 .sprite-container {
   position: relative;
-
 }
 
 .shiny-stars-container {
   position: absolute;
   top: 0;
   left: 0;
-
 }

@@ -12,21 +12,24 @@
   top: 70px;
   left: 33%;
   transform: translateX(-10%);
-  width: 80%
+  width: 80%;
 }
 
-.imagebox-component{
+.imagebox-component {
   margin-top: 40px;
   display: flex;
   justify-content: center;
 }
 
-.infobox-component{
+.infobox-component {
   display: flex;
   justify-content: center;
 }
 
-html, body, body > div, .app {
+html,
+body,
+body > div,
+.app {
   height: 100%;
   background-color: red;
 }
