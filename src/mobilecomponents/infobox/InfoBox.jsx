@@ -53,16 +53,22 @@ const InfoBox = ({ pokemonId }) => {
   return (
     <div className="info-box">
       <Box className="info-container">
-        <Typography>
-          {capitalizeEachWord(pokeName)} #{globalID}
-        </Typography>
-        <Typography
-          variant="h5"
-          component="h2"
-          className="type-header"
-          align="left"
-        >
-          Type:
+        {globalID && (
+          <Typography>
+            {capitalizeEachWord(pokeName)} {"#" + globalID}
+          </Typography>
+        )}
+        {globalID && (
+          <Typography
+            variant="h5"
+            component="h2"
+            className="type-header"
+            align="left"
+          >
+            Type:
+          </Typography>
+        )}
+        {globalID && (
           <List>
             {pokeTypes.map((type, index) => (
               <List key={index}>
@@ -70,7 +76,7 @@ const InfoBox = ({ pokemonId }) => {
               </List>
             ))}
           </List>
-        </Typography>
+        )}
 
         {typeRelations && (
           <div>
