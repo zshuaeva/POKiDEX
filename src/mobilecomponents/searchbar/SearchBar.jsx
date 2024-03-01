@@ -10,7 +10,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
     try {
       const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${searchInput.toLowerCase()}`,
@@ -29,7 +29,6 @@ const SearchBar = ({ onSearch }) => {
   return (
     <form onSubmit={handleSubmit}>
       {" "}
-      {/* Form element added */}
       <Box sx={{ "& > :not(style)": { m: 1 } }} className="search-box">
         <Box
           sx={{
