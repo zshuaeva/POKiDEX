@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Typography, Box } from "@mui/material";
-import List from "@mui/material/List";
 import "./InfoBox.css";
 
 const InfoBox = ({ pokemonId }) => {

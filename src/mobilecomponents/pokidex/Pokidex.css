@@ -1,6 +1,6 @@
 .pokedex-container {
   background-color: red;
-  height: 150px;
+  height: 100px;
 }
 
 .lighting-container {
@@ -23,6 +23,7 @@
 }
 
 .lighting-one {
+  margin-left: 10px;
   height: 20px;
   width: 20px;
   background-color: #9b0000;
@@ -30,6 +31,7 @@
 }
 
 .lighting-two {
+  margin-left: 5px;
   height: 20px;
   width: 20px;
   background-color: #ffdd00;
@@ -37,6 +39,7 @@
 }
 
 .lighting-three {
+  margin-left: 5px;
   height: 20px;
   width: 20px;
   background-color: #00bc2c;
