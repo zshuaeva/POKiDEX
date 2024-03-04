@@ -53,67 +53,68 @@ const InfoBox = ({ pokemonId }) => {
     <div className="info-box">
       <Box className="info-container">
         {globalID && (
-          <Typography
-          variant="h5">
+          <Typography className="pokemon-name" variant="h5">
             {capitalizeEachWord(pokeName)} {"#" + globalID}
           </Typography>
         )}
         {globalID && (
-          <Typography
-            variant="h5"
-            component="h1"
-            className="type-header"
-            align="left"
-          >
-            Type:
-          </Typography>
-        )}
-        {globalID && (
-          <Box>
-            {pokeTypes.map((type, index) => (
-              <Typography key={index}>
-                {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
-              </Typography>
-            ))}
-          </Box>
-        )}
-
-        {typeRelations && (
-          <div>
-            <Typography variant="h5" component="h3" className="type-header">
-              Weaknesses
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Typography className="type-header" align="left">
+              Type:
             </Typography>
-            <div>
-              <strong>2x damage from:</strong>{" "}
+
+            {pokeTypes.map((type, index) => (
+              <React.Fragment key={index}>
+                <Typography className="types-info">
+                  {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
+                </Typography>
+                {index < pokeTypes.length - 1 && <span>, </span>}
+              </React.Fragment>
+            ))}
+          </div>
+        )}
+        <Box className="spacing"></Box>
+        <Box className="spacing"></Box>
+        {typeRelations && (
+          <Box>
+            <Typography variant="h5" component="h5" className="weakness-header">
+              <strong>Weaknesses:</strong>
+            </Typography>
+            <Box className="info-info">
+              2x damage from:{" "}
               {typeRelations.double_damage_from
                 ? typeRelations.double_damage_from
                     .map((type) => capitalizeEachWord(type.name))
                     .join(", ")
                 : ""}
-            </div>
-            <Typography variant="h5" component="h3" className="type-header">
-              Strengths
+            </Box>
+            <Box className="spacing"></Box>
+            <Box className="spacing"></Box>
+            <Typography variant="h5" component="h5" className="strength-header">
+              <strong>Strengths:</strong>
             </Typography>
-            <div>
-              <strong>2x damage to:</strong>{" "}
+            <Box className="info-info">
+              2x damage to:{" "}
               {typeRelations.double_damage_to
                 ? typeRelations.double_damage_to
                     .map((type) => capitalizeEachWord(type.name))
                     .join(", ")
                 : ""}
-            </div>
-            <Typography variant="h5" component="h3" className="type-header">
-              Effects
+            </Box>
+            <Box className="spacing"></Box>
+            <Box className="spacing"></Box>
+            <Typography variant="h5" component="h5" className="effects-header">
+              <strong>Effects:</strong>
             </Typography>
-            <div>
-              <strong>No damage to:</strong>{" "}
+            <Box className="info-info">
+              No damage to:{" "}
               {typeRelations.no_damage_to
                 ? typeRelations.no_damage_to
                     .map((type) => capitalizeEachWord(type.name))
                     .join(", ")
                 : ""}
-            </div>
-          </div>
+            </Box>
+          </Box>
         )}
       </Box>
     </div>

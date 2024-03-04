@@ -10,6 +10,9 @@
   justify-content: space-between;
   width: 33%;
 }
+.lighting-container > div {
+  flex-shrink: 0;
+}
 
 .main-lighting {
   height: 55px;

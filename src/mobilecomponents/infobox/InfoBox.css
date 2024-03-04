@@ -1,12 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .info-container {
   display: flex;
   margin-top: 30px;
   background-color: lightgreen;
   width: 340px;
-  height: 300px;
+  max-height: 300px;
   align-items: left;
   flex-direction: column;
   border-radius: 10px;
   text-align: left;
+  padding-left: 10px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.info-box {
+  font-family: "Press Start 2P", cursive;
+}
+
+.type-header,
+.weakness-header,
+.strength-header,
+.effects-header {
+  font-family: "Press Start 2P", cursive !important;
+  font-size: 14px !important;
+}
+.types-info {
+  font-family: "Press Start 2P", cursive !important;
+  font-size: 12px !important;
+}
+
+.pokemon-name {
+  font-family: "Press Start 2P", cursive !important;
+}
+.spacing {
+  height: 5px;
+}
+
+.info-info {
   padding-left: 15px;
+  font-size: 10px;
 }

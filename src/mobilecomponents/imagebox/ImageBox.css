@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 .imagebox-container {
   height: 250px;
   width: 300px;
@@ -33,6 +34,11 @@
 
 .shiny-toggle {
   margin-top: 7px;
+}
+
+.shiny-toggle .MuiButton-root {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
 }
 
 .shiny-stars {
