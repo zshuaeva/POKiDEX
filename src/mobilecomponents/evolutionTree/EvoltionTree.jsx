@@ -24,6 +24,7 @@ const EvolutionTree = ({ pokemonId }) => {
 
   return (
     <>
+    Evolution Chain Url: {evolutionUrl}
     </>
   )
 }
