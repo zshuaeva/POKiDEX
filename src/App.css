@@ -33,6 +33,11 @@
   justify-content: center;
 }
 
+.evolution-component{
+  display: flex;
+  justify-content: center;
+}
+
 html,
 body,
 body > div,

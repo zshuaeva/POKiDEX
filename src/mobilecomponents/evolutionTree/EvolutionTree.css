@@ -1,0 +1,30 @@
+.evolution-tree {
+  display: flex;
+  margin-top: 30px;
+  background-color: lightgreen;
+  width: 340px;
+  max-height: 300px;
+  align-items: left;
+  flex-direction: column;
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.evo-sprites{
+  display: flex;
+}
+
+/* .nested{
+  background-color: red;
+  max-width: 40px;
+} */
+
+.evo-render{
+  display: flex;
+  flex-direction: row;
+}
