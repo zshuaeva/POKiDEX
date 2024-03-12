@@ -4,10 +4,12 @@ import Pokidex from "./mobilecomponents/pokidex/Pokidex";
 import SearchBar from "./mobilecomponents/searchbar/SearchBar";
 import ImageBox from "./mobilecomponents/imagebox/ImageBox";
 import InfoBox from "./mobilecomponents/infobox/InfoBox";
+import TabNavigation from "./mobilecomponents/tabNavigation/TabNavigation";
 import EvolutionTree from "./mobilecomponents/evolutionTree/EvoltionTree";
 
 const App = () => {
   const [pokemonId, setPokemonId] = useState(null);
+  const [activeTab, setActiveTab] = useState("info");
 
   const handleSearch = (id) => {
     setPokemonId(id);
@@ -19,14 +21,19 @@ const App = () => {
       <div className="searchbar-component">
         <SearchBar onSearch={handleSearch} />
       </div>
-      <div className="imagebox-component">
-        <ImageBox pokemonId={pokemonId} />
-      </div>
-      <div className="infobox-component">
-        <InfoBox pokemonId={pokemonId} />
-      </div>
-      <div className="evolution-component">
-        <EvolutionTree pokemonId={pokemonId} />
+      <div className="content-container">
+        <div className="imagebox-infobox-container">
+          <div className="imagebox-component">
+            <ImageBox pokemonId={pokemonId} />
+          </div>
+          <div className="infobox-component">
+            {activeTab === "info" && <InfoBox pokemonId={pokemonId} />}
+            {activeTab === "evolution" && <EvolutionTree pokemonId={pokemonId} />}
+            <div className="tab-navigation">
+              <TabNavigation setActiveTab={setActiveTab} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

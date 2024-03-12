@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Button } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { grey } from "@mui/material/colors";
-import Stack from "@mui/material/Stack";
-import ShinyStars from "./shinyindicator.png";
-import "./ImageBox.css";
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
+import Stack from '@mui/material/Stack';
+import ShinyStars from './shinyindicator.png';
+import './ImageBox.css';
 
-const ImageBox = ({ pokemonId }) => {
+const ImageBox = () => {
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[500]),
     backgroundColor: grey[500],
@@ -17,6 +18,8 @@ const ImageBox = ({ pokemonId }) => {
 
   const [pokeSprite, setPokeSprite] = useState("");
   const [isShiny, setIsShiny] = useState(false);
+  // const dispatch = useDispatch();
+  const pokemonId = useSelector((state) => state.pokemon.pokemonId);
 
   const fetchSprite = useCallback(() => {
     if (pokemonId) {

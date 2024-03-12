@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./EvolutionTree.css";
 import { Typography, Box } from "@mui/material";
+import { useSelector } from "react-redux";
 
-const EvolutionTree = ({ pokemonId }) => {
+const EvolutionTree = () => {
     const [evolutionChain, setEvolutionChain] = useState(null);
     const [evolutionData, setEvolutionData] = useState(null);
+
+    const pokemonId = useSelector((state) => state.pokemon.pokemonId);
 
     const fetchPokemonData = useCallback(() => {
         if (!pokemonId) return;
@@ -76,9 +79,6 @@ const EvolutionTree = ({ pokemonId }) => {
 };
 
 export default EvolutionTree;
-
-
-
 
 
 

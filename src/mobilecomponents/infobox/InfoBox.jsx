@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Typography, Box } from "@mui/material";
 import "./InfoBox.css";
+import { useSelector } from "react-redux";
 
-const InfoBox = ({ pokemonId }) => {
+const InfoBox = () => {
   const [pokeTypes, setPokeTypes] = useState([]);
   const [typeRelations, setTypeRelations] = useState(null);
   const [globalID, setGlobalID] = useState("");
   const [pokeName, setPokeName] = useState("");
+
+  const pokemonId = useSelector((state) => state.pokemon.pokemonId);
 
   const fetchPokemonData = useCallback(() => {
     if (!pokemonId) return;
@@ -25,18 +28,23 @@ const InfoBox = ({ pokemonId }) => {
       .catch((error) => console.log("Error fetching data:", error));
   }, [pokemonId]);
 
+  const fetchTypeRelations = useCallback(
+    (typeUrl) => {
+      fetch(typeUrl)
+        .then((res) => res.json())
+        .then((data) => {
+          setTypeRelations(data.damage_relations);
+        })
+        .catch((error) =>
+          console.log("Error fetching type relations:", error)
+        );
+    },
+    []
+  );
+
   useEffect(() => {
     fetchPokemonData();
   }, [fetchPokemonData]);
-
-  const fetchTypeRelations = useCallback((typeUrl) => {
-    fetch(typeUrl)
-      .then((res) => res.json())
-      .then((data) => {
-        setTypeRelations(data.damage_relations);
-      })
-      .catch((error) => console.log("Error fetching type relations:", error));
-  }, []);
 
   useEffect(() => {
     if (!pokeTypes.length) return;
@@ -77,7 +85,11 @@ const InfoBox = ({ pokemonId }) => {
         <Box className="spacing"></Box>
         {typeRelations && (
           <Box>
-            <Typography variant="h5" component="h5" className="weakness-header">
+            <Typography
+              variant="h5"
+              component="h5"
+              className="weakness-header"
+            >
               <strong>Weaknesses:</strong>
             </Typography>
             <Box className="info-info">
@@ -90,7 +102,11 @@ const InfoBox = ({ pokemonId }) => {
             </Box>
             <Box className="spacing"></Box>
             <Box className="spacing"></Box>
-            <Typography variant="h5" component="h5" className="strength-header">
+            <Typography
+              variant="h5"
+              component="h5"
+              className="strength-header"
+            >
               <strong>Strengths:</strong>
             </Typography>
             <Box className="info-info">
@@ -103,7 +119,11 @@ const InfoBox = ({ pokemonId }) => {
             </Box>
             <Box className="spacing"></Box>
             <Box className="spacing"></Box>
-            <Typography variant="h5" component="h5" className="effects-header">
+            <Typography
+              variant="h5"
+              component="h5"
+              className="effects-header"
+            >
               <strong>Effects:</strong>
             </Typography>
             <Box className="info-info">
