@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.tab-navigation{
+background-color: lightgreen;
+border-radius: 0px 0px 10px 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+margin-top: -1px;
+}
+
+.tab-button {
+  font-family: "Press Start 2P", cursive !important;
+  color: darkgreen !important;
+}

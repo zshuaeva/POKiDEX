@@ -1,42 +1,36 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./EvolutionTree.css";
 import { Typography, Box } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setPokemonId } from "../../pokemonSlice";
 
 const EvolutionTree = () => {
-    const [evolutionChain, setEvolutionChain] = useState(null);
     const [evolutionData, setEvolutionData] = useState(null);
+    const dispatch = useDispatch();
 
     const pokemonId = useSelector((state) => state.pokemon.pokemonId);
 
-    const fetchPokemonData = useCallback(() => {
+    const fetchEvolutionData = useCallback((pokemonId) => {
         if (!pokemonId) return;
-        const fetchUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`;
-        fetch(fetchUrl)
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
             .then((res) => res.json())
             .then((data) => {
-                setEvolutionChain(data.evolution_chain.url);
+                fetch(data.species.url)
+                    .then((res) => res.json())
+                    .then((speciesData) => {
+                        fetch(speciesData.evolution_chain.url)
+                            .then((res) => res.json())
+                            .then((evolutionData) => setEvolutionData(evolutionData))
+                            .catch((error) => console.log("Error fetching evolution data:", error));
+                    })
+                    .catch((error) => console.log("Error fetching species data:", error));
             })
             .catch((error) => console.log("Error fetching data:", error));
-    }, [pokemonId]);
+    }, []);
 
-    const fetchEvolutionChain = useCallback(() => {
-        if (!evolutionChain) return;
-        fetch(evolutionChain)
-            .then((res) => res.json())
-            .then((data) => {
-                setEvolutionData(data);
-            })
-            .catch((error) => console.log("Error fetching evolution chain:", error));
-    }, [evolutionChain]);
-
-    useEffect(() => {
-        fetchPokemonData();
-    }, [fetchPokemonData]);
-
-    useEffect(() => {
-        fetchEvolutionChain();
-    }, [fetchEvolutionChain]);
+    const handleClickPokemon = (id) => {
+        dispatch(setPokemonId(id));
+    };
 
     const renderEvolutionChain = () => {
         if (!evolutionData) return null;
@@ -44,9 +38,17 @@ const EvolutionTree = () => {
         const chain = evolutionData.chain;
         const evolutionList = [];
 
+        const capitalizeFirstLetter = (name) => {
+            return name.charAt(0).toUpperCase() + name.slice(1);
+        };
+
         const traverseChain = (chain) => {
             if (chain.species) {
-                evolutionList.push(chain.species.name);
+                evolutionList.push(
+                    <div key={chain.species.name} onClick={() => handleClickPokemon(chain.species.name)}>
+                        {capitalizeFirstLetter(chain.species.name)}
+                    </div>
+                );
             }
             if (chain.evolves_to && chain.evolves_to.length > 0) {
                 chain.evolves_to.forEach((evolution) => {
@@ -59,17 +61,19 @@ const EvolutionTree = () => {
 
         return (
             <div>
-                {evolutionList.map((pokemon, index) => (
-                    <div key={index}>{pokemon}</div>
-                ))}
+                {evolutionList}
             </div>
         );
     };
 
+    useEffect(() => {
+        fetchEvolutionData(pokemonId);
+    }, [pokemonId, fetchEvolutionData]);
+
     return (
         <div className="evolution-tree">
             <Box className="evolution-container">
-                <Typography>Evolution Chain:</Typography>
+                <Typography className="family-header">Pokemon Family:</Typography>
                 <div className="evo-sprites">
                     {renderEvolutionChain()}
                 </div>
@@ -79,17 +83,3 @@ const EvolutionTree = () => {
 };
 
 export default EvolutionTree;
-
-
-
-// https://pokeapi.co/api/v2/pokemon-species/1/
-//contains key value pair for evlution chain link, by id.
-
-// "evolution_chain": {
-//   "url": "https://pokeapi.co/api/v2/evolution-chain/1/"
-// },
-
-
-// https://pokeapi.co/api/v2/evolution-chain/2/
-// ID number is related to next species not globaldex
-// data.chain.evolves_to.name

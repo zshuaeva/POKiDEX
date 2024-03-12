@@ -43,7 +43,7 @@ const SearchBar = () => {
         />
         <Button
           type="submit"
-          variant="contained"
+          variant="primary"
           size="small"
           className="search-button"
           style={{ color: "white" }}

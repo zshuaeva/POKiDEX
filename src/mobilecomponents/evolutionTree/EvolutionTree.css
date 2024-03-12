@@ -6,7 +6,7 @@
   max-height: 300px;
   align-items: left;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
   text-align: left;
   padding-left: 10px;
   padding-right: 15px;
@@ -27,4 +27,8 @@
 .evo-render{
   display: flex;
   flex-direction: row;
+}
+
+.family-header{
+  font-family : "Press Start 2P", cursive !important;
 }

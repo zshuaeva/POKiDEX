@@ -1,5 +1,6 @@
 import React from "react";
 import "./TabNavigation.css";
+import { Button } from "@mui/material";
 
 const TabNavigation = ({ activeTab, setActiveTab }) => {
   const handleTabChange = (tab) => {
@@ -8,18 +9,26 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
 
   return (
     <div className="tab-navigation">
-      <button
+      <Button
+        type="submit"
+        variant="primary"
+        size="small"
+        style={{ color: "Black" }}
         className={`tab-button ${activeTab === "info" ? "active" : ""}`}
         onClick={() => handleTabChange("info")}
       >
         Info
-      </button>
-      <button
+      </Button>
+      <Button
+        type="submit"
+        variant="primary"
+        size="small"
+        style={{ color: "black" }}
         className={`tab-button ${activeTab === "evolution" ? "active" : ""}`}
         onClick={() => handleTabChange("evolution")}
       >
-        Evolution
-      </button>
+        Family
+      </Button>
     </div>
   );
 };
