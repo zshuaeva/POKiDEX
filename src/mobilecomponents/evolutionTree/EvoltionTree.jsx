@@ -4,10 +4,7 @@ import { Typography, Box } from "@mui/material";
 
 const EvolutionTree = ({ pokemonId }) => {
     const [evolutionChain, setEvolutionChain] = useState(null);
-    const [pokeSprites, setPokeSprites] = useState({});
-    const [numSpritesFetched, setNumSpritesFetched] = useState(0);
-
-    console.log(pokemonId, "ID PROP IS WORKING");
+    const [evolutionData, setEvolutionData] = useState(null);
 
     const fetchPokemonData = useCallback(() => {
         if (!pokemonId) return;
@@ -20,91 +17,66 @@ const EvolutionTree = ({ pokemonId }) => {
             .catch((error) => console.log("Error fetching data:", error));
     }, [pokemonId]);
 
+    const fetchEvolutionChain = useCallback(() => {
+        if (!evolutionChain) return;
+        fetch(evolutionChain)
+            .then((res) => res.json())
+            .then((data) => {
+                setEvolutionData(data);
+            })
+            .catch((error) => console.log("Error fetching evolution chain:", error));
+    }, [evolutionChain]);
+
     useEffect(() => {
         fetchPokemonData();
     }, [fetchPokemonData]);
 
     useEffect(() => {
-        if (!evolutionChain) return;
+        fetchEvolutionChain();
+    }, [fetchEvolutionChain]);
 
-        fetch(evolutionChain)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setEvolutionChain(data.chain);
-                fetchSprites(data.chain);
-            })
-            .catch((error) => console.log("Error fetching evolution chain:", error));
-    }, [evolutionChain]);
+    const renderEvolutionChain = () => {
+        if (!evolutionData) return null;
 
-    const fetchSprites = (chain) => {
-        if (!chain || !chain.species) return;
+        const chain = evolutionData.chain;
+        const evolutionList = [];
 
-        const fetchSprite = (pokemonId) => {
-            const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
-            fetch(url)
-                .then((res) => res.json())
-                .then((data) => {
-                    setPokeSprites((prevSprites) => ({
-                        ...prevSprites,
-                        [pokemonId]: data.sprites.front_default
-                    }));
-                    setNumSpritesFetched((prevNumSprites) => prevNumSprites + 1);
-                })
-                .catch((error) => console.log("Error fetching sprite:", error));
+        const traverseChain = (chain) => {
+            if (chain.species) {
+                evolutionList.push(chain.species.name);
+            }
+            if (chain.evolves_to && chain.evolves_to.length > 0) {
+                chain.evolves_to.forEach((evolution) => {
+                    traverseChain(evolution);
+                });
+            }
         };
 
-        fetchSprite(getPokemonIdFromUrl(chain.species.url));
-
-        chain.evolves_to.forEach((evolution) => {
-            fetchSprite(getPokemonIdFromUrl(evolution.species.url));
-        });
-    };
-
-    const getPokemonIdFromUrl = (url) => {
-        const parts = url.split("/");
-        return parts[parts.length - 2];
-    };
-
-    const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
-
-    const renderChain = (chain) => {
-        if (!chain || !chain.species) return null;
-
-        if (numSpritesFetched !== Object.keys(pokeSprites).length) {
-            // Not all sprites are fetched yet
-            return null;
-        }
+        traverseChain(chain);
 
         return (
-            <div className="evo-render" key={chain.species.name}>
-                {pokeSprites[getPokemonIdFromUrl(chain.species.url)] && (
-                    <img src={pokeSprites[getPokemonIdFromUrl(chain.species.url)]} alt={chain.species.name} />
-                )}
-                {/* <p>{capitalizeFirstLetter(chain.species.name)}</p> */}
-                {chain.evolves_to.length > 0 && (
-                    <div className="nested">
-                        {chain.evolves_to.map((evolution) => renderChain(evolution))}
-                    </div>
-                )}
+            <div>
+                {evolutionList.map((pokemon, index) => (
+                    <div key={index}>{pokemon}</div>
+                ))}
             </div>
         );
     };
 
     return (
         <div className="evolution-tree">
-          <Box className="evolution-container">
-            <h5>Evolution Chain:</h5>
-            <div className="evo-sprites"></div>
-            {renderChain(evolutionChain)}
-          </Box>
+            <Box className="evolution-container">
+                <Typography>Evolution Chain:</Typography>
+                <div className="evo-sprites">
+                    {renderEvolutionChain()}
+                </div>
+            </Box>
         </div>
     );
 };
 
 export default EvolutionTree;
+
 
 
 
