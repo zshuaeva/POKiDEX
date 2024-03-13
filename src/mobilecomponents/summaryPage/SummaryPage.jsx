@@ -1,8 +1,8 @@
-import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFlavorText, setFlavorText } from '../../pokemonSlice';
 import './SummaryPage.css';
+import { TypeAnimation } from 'react-type-animation';
 
 const SummaryPage = () => {
   const dispatch = useDispatch();
