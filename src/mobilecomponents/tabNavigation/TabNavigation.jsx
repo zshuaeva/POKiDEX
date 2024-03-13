@@ -17,7 +17,7 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
         className={`tab-button ${activeTab === "info" ? "active" : ""}`}
         onClick={() => handleTabChange("info")}
       >
-        Info
+        Type
       </Button>
       <Button
         type="submit"
@@ -28,6 +28,16 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
         onClick={() => handleTabChange("evolution")}
       >
         Family
+      </Button>
+      <Button
+        type="submit"
+        variant="primary"
+        size="small"
+        style={{ color: "black" }}
+        className={`tab-button ${activeTab === "summary" ? "active" : ""}`}
+        onClick={() => handleTabChange("summary")}
+      >
+        Summary
       </Button>
     </div>
   );

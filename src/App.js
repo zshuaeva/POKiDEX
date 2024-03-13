@@ -6,6 +6,7 @@ import ImageBox from "./mobilecomponents/imagebox/ImageBox";
 import InfoBox from "./mobilecomponents/infobox/InfoBox";
 import TabNavigation from "./mobilecomponents/tabNavigation/TabNavigation";
 import EvolutionTree from "./mobilecomponents/evolutionTree/EvoltionTree";
+import SummaryPage from "./mobilecomponents/summaryPage/SummaryPage";
 
 const App = () => {
   const [pokemonId, setPokemonId] = useState(null);
@@ -29,6 +30,7 @@ const App = () => {
           <div className="infobox-component">
             {activeTab === "info" && <InfoBox pokemonId={pokemonId} />}
             {activeTab === "evolution" && <EvolutionTree pokemonId={pokemonId} />}
+            {activeTab === "summary" && <SummaryPage pokemonId={pokemonId} />}
             <div className="tab-navigation">
               <TabNavigation setActiveTab={setActiveTab} />
             </div>
