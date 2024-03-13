@@ -22,8 +22,8 @@ const SummaryPage = () => {
 
   return (
     <div className="summary-container">
-      <div>
-        <Typography>{flavorText}</Typography>
+      <div className="summary-text">
+        {flavorText}
       </div>
     </div>
   );

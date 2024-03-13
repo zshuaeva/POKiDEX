@@ -31,15 +31,15 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box className="search-box">
+      <Box  className="search-box">
         <TextField
           id="input-with-sx"
-          label="Pokemon Name or #"
+          label="PkMn Name or #"
           variant="outlined"
           value={searchInput}
           onChange={handleInputChange}
           inputProps={{ style: { color: "white" } }}
-          className="search-input"
+          className="search-box"
         />
         <Button
           type="submit"

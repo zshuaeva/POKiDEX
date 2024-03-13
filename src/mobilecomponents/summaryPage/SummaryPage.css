@@ -14,5 +14,11 @@
   padding-right: 15px;
   padding-bottom: 10px;
   padding-top: 5px;
+
+}
+
+.summary-text {
+  padding-top: 5px;
   font-family: "Press Start 2P", cursive !important;
+  font-size: 15px;
 }

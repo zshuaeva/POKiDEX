@@ -9,3 +9,15 @@
   color: white;
   font-family: "Press Start 2P", cursive !important;
 }
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  font-family: "Press Start 2P", cursive !important;
+  font-size: 10px !important;
+  color: white !important;
+}
+
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  color: white !important;
+  font-size: 9px !important;
+  font-family: "Press Start 2P", cursive !important;
+}
