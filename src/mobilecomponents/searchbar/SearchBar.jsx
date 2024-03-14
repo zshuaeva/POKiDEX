@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setPokemonId } from "../../pokemonSlice";
 import "./SearchBar.css";
 import { Box, TextField, Button } from "@mui/material";
+import RandomIcon from './random.png';
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -29,9 +30,14 @@ const SearchBar = () => {
     }
   };
 
+  const handleRandomize = () => {
+    const randomId = Math.floor(Math.random() * 1025) + 1;
+    dispatch(setPokemonId(randomId));
+  };
+
   return (
     <form onSubmit={handleSubmit}>
-      <Box  className="search-box">
+      <Box className="search-box">
         <TextField
           id="input-with-sx"
           label="PkMn Name or #"
@@ -50,6 +56,16 @@ const SearchBar = () => {
         >
           Search
         </Button>
+        <div className="randomize-button-container">
+          <Button
+            size="small"
+            className="randomize-button"
+            style={{ color: "white" }}
+            onClick={handleRandomize}
+          >
+            <img src={RandomIcon} alt="Random Icon" className="random-icon" />
+          </Button>
+        </div>
       </Box>
     </form>
   );

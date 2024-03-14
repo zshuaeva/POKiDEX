@@ -3,6 +3,9 @@
 .search-box {
   color: white;
   font-family: "Press Start 2P", cursive !important;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .search-button {
@@ -20,4 +23,8 @@
   color: white !important;
   font-size: 9px !important;
   font-family: "Press Start 2P", cursive !important;
+}
+
+.random-icon{
+  max-height: 25px;
 }
