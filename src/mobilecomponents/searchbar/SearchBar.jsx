@@ -47,6 +47,7 @@ const SearchBar = () => {
           inputProps={{ style: { color: "white" } }}
           className="search-box"
         />
+        <Box className="button-box">
         <Button
           type="submit"
           variant="primary"
@@ -66,6 +67,7 @@ const SearchBar = () => {
             <img src={RandomIcon} alt="Random Icon" className="random-icon" />
           </Button>
         </div>
+        </Box>
       </Box>
     </form>
   );
