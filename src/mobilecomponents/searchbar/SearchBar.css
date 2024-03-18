@@ -33,3 +33,8 @@
 .button-box{
   display: flex;
 }
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input
+{
+  width: 225px !important;
+}
