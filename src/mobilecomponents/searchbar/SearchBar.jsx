@@ -50,7 +50,7 @@ const SearchBar = () => {
         <Box className="button-box">
         <Button
           type="submit"
-          variant="primary"
+          variant="text"
           size="small"
           className="search-button"
           style={{ color: "white" }}
@@ -60,6 +60,7 @@ const SearchBar = () => {
         <div className="randomize-button-container">
           <Button
             size="small"
+            variant="text"
             className="randomize-button"
             style={{ color: "white" }}
             onClick={handleRandomize}

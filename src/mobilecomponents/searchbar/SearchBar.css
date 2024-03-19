@@ -6,11 +6,13 @@
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  width: 100%;
 }
 
 .search-button {
   color: white;
   font-family: "Press Start 2P", cursive !important;
+
 }
 
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
@@ -26,16 +28,25 @@
 }
 
 .random-icon{
-  max-height: 25px;
-  padding-left: 50px;
+  max-height: 27px;
 }
 
 .button-box{
+  margin-top: 5px;
   display: flex;
-  background-color: green;
+  background-color: rgb(143, 143, 143);
+  border-radius: 15px;
 }
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input
 {
   width: 225px !important;
+}
+
+.randomize-button{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background-color: #ffdd00 !important;
+  border-radius: 0px 15px 15px 0px !important;
 }
