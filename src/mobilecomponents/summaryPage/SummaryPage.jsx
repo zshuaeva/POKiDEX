@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFlavorText, setFlavorText } from '../../pokemonSlice';
 import './SummaryPage.css';
-import { TypeAnimation } from 'react-type-animation';
 
 const SummaryPage = () => {
   const dispatch = useDispatch();
@@ -13,7 +12,12 @@ const SummaryPage = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`)
       .then((res) => res.json())
       .then((data) => {
-        dispatch(setFlavorText(data.flavor_text_entries[0].flavor_text));
+        const enFlavorTextEntry = data.flavor_text_entries.find(entry => entry.language.name === "en");
+        if (enFlavorTextEntry) {
+          dispatch(setFlavorText(enFlavorTextEntry.flavor_text));
+        } else {
+          console.error("No English summary found for this Pokemon.");
+        }
       })
       .catch((error) => {
         console.error("Error fetching flavor text:", error);
